@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CropImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('crop-image', 'CropImageController@index');
-Route::post('crop-image', ['as'=>'croppie.upload-image','uses'=>'CropImageController@uploadCropImage']);
-
-
+Route::get('/', [CropImageUploadController::class, 'index']);
+Route::post('save-crop-image', [CropImageUploadController::class, 'store']);
