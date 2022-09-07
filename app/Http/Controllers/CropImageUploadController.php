@@ -17,10 +17,12 @@ class CropImageUploadController extends Controller
 
     public function store(Request $request)
     {
+      dd($request->all());
         $name = uniqid() . '.png';
-        $path = '/storage/upload/' . $name;
-        $request->file('image')->move(public_path('/storage/upload'), $name);
 
+        $path = '/storage/upload/' . $name;
+
+        $request->file('image')->move(public_path('/storage/upload'), $name);
         Image::create([
             'title' => $path
         ]);
